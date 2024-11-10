@@ -1,8 +1,8 @@
-import dotenv  from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import { postRouter, userRouter } from './routes';
-import { addTimestamp } from './middlewares';
+import { addTimestamp, errorHandler } from './middlewares';
 
 
 const app = express();
@@ -17,8 +17,11 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/user', userRouter);
-app.use('/post', postRouter);
+app.use('/api/user', userRouter);
+app.use('/api/post', postRouter);
+
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Hosting at: http://localhost:${port}`)

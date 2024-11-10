@@ -8,4 +8,4 @@ export const pool = new Pool({
     port: 5432,
 });
 
-export const check = process.env.DB_PASSWORD
+
